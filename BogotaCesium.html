@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Importar biblioteca Cesium -->
+<script src="../Build/Cesium/Cesium.js"></script>
+<style>
+@import url("../Build/Cesium/Widgets/widgets.css");
+
+</style>
+</head>
+<body>
+<!-- Contenedor del visor Cesium -->
+<div id="cesiumContainer">
+</div>
+<script>
+
+//Selecting the terrain this way allows the base layer picker to show the selection.
+var terrain = Cesium.createDefaultTerrainProviderViewModels();
+
+var viewer = new Cesium.Viewer('cesiumContainer', {
+    terrainProviderViewModels: terrain,
+    selectedTerrainProviderViewModel: terrain[1]
+});
+
+// This array will hold our cartographic height queries, one per building, and will
+// also be populated with the answers.
+var terrainSamplePositions = [];
+
+var dataSource2 = new Cesium.GeoJsonDataSource();
+
+var promise = dataSource2.load('../Data/data.geojson');
+
+promise.then(function(dataSource2) {
+    viewer.dataSources.add(dataSource2);
+    viewer.zoomTo(dataSource2);
+
+
+    //Get the array of entities
+    var entities2 = dataSource2.entities.values;
+
+    var colorHash = {};
+    for (var i = 0; i < entities2.length; i++) {
+        //For each entity, create a random color based on the state name.
+        //Some states have multiple entities, so we store the color in a
+        //hash so that we use the same color for the entire state.
+        var entity = entities2[i];
+        var name = entity.Elev_in_m;
+        var color = colorHash[name];
+        if (!color) {
+            color = Cesium.Color.BROWN; 
+            colorHash[name] = color;
+        }
+
+        //Set the polygon material to our random color.
+        entity.polygon.material = color;
+        //Remove the outlines.
+        entity.polygon.outline = false;
+
+        // TODO: More sanity checking for undefined values etc.
+        var position = entity.polygon.hierarchy.getValue().positions[0];
+        terrainSamplePositions.push(Cesium.Cartographic.fromCartesian(position));
+
+        //Extrude the polygon based on the state's population.  Each entity
+        //stores the properties for the GeoJSON feature it was created from
+        //Since the population is a huge number, we divide by 50.
+        entity.polygon.extrudedHeight = entity.properties.altura;
+        entity.polygon.height = 0;
+    }
+
+    // Asking for terrain heights is asynchronous, because the answer may
+    // reside on the terrain server.
+    Cesium.when(Cesium.sampleTerrain(viewer.terrainProvider, 11, terrainSamplePositions), function() {
+        // Update all building heights to sit on top of the terrain.
+        for (var i = 0; i < entities2.length; i++) {
+            var entity = entities2[i];
+            var terrainHeight = terrainSamplePositions[i].height;
+            // The bottom of the building sits on the terrain.
+            entity.polygon.height = terrainHeight;
+            // The top of the building adds the building height to the terrain height.
+            entity.polygon.extrudedHeight = entity.properties.altura + terrainHeight;
+        }
+    });
+
+}).otherwise(function(error){
+    //Display any errrors encountered while loading.
+    console.error(error);
+    console.error('No se cumplió la promesa!!');
+});
+</script>
+</body>
+</html>

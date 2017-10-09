@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Importar biblioteca Cesium -->
+<script src="../Build/Cesium/Cesium.js"></script>
+<style>
+@import url("../Build/Cesium/Widgets/widgets.css");
+
+</style>
+</head>
+<body>
+<!-- Contenedor del visor Cesium -->
+<div id="cesiumContainer">
+</div>
+<script>
+
+var viewer = new Cesium.Viewer('cesiumContainer');
+var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+    url: 'http://hosting.virtualcitysystems.de/demos/release/data/buildings/berlin_notex_toplevel/tiles.json',
+    show: true
+}));
+var redRectangle = viewer.entities.add({
+    name : 'Red translucent rectangle with outline',
+    rectangle : {
+        coordinates : Cesium.Rectangle.fromDegrees(13.40483721, 52.46717907, 13.404882244, 52.46724347),
+        material : Cesium.Color.RED.withAlpha(0.0),
+        outline : true,
+        outlineColor : Cesium.Color.RED
+    }
+});
+
+viewer.flyTo(redRectangle, {
+    offset : new Cesium.HeadingPitchRange(Math.PI / 2, -Math.PI / 4, 20)
+});
+</script>
+</body>
+</html>    
