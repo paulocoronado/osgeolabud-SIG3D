@@ -2,10 +2,10 @@
     "accessors" : [
         {
             "bufferView" : 0, 
-            "componentType" : 5121, 
-            "count" : 36, 
+            "componentType" : 5123, 
+            "count" : 6648, 
             "max" : [
-                23
+                4215
             ], 
             "min" : [
                 0
@@ -15,23 +15,23 @@
         {
             "bufferView" : 1, 
             "componentType" : 5126, 
-            "count" : 24, 
+            "count" : 4216, 
             "max" : [
-                1.0000004768371582, 
-                1.0, 
-                1.0000005960464478
+                5.484795093536377, 
+                18.383100509643555, 
+                11.049999237060547
             ], 
             "min" : [
-                -1.0000003576278687, 
-                -1.0, 
-                -1.0000003576278687
+                -7.1100311279296875, 
+                -0.004735469818115234, 
+                -12.046615600585938
             ], 
             "type" : "VEC3"
         }, 
         {
             "bufferView" : 2, 
             "componentType" : 5126, 
-            "count" : 24, 
+            "count" : 4216, 
             "max" : [
                 1.0, 
                 1.0, 
@@ -43,6 +43,78 @@
                 -1.0
             ], 
             "type" : "VEC3"
+        }, 
+        {
+            "bufferView" : 3, 
+            "componentType" : 5126, 
+            "count" : 4216, 
+            "max" : [
+                0.9940491318702698, 
+                0.9979747987817973
+            ], 
+            "min" : [
+                0.0005165096372365952, 
+                0.005440831184387207
+            ], 
+            "type" : "VEC2"
+        }, 
+        {
+            "bufferView" : 4, 
+            "componentType" : 5123, 
+            "count" : 756, 
+            "max" : [
+                503
+            ], 
+            "min" : [
+                0
+            ], 
+            "type" : "SCALAR"
+        }, 
+        {
+            "bufferView" : 5, 
+            "componentType" : 5126, 
+            "count" : 504, 
+            "max" : [
+                5.3940110206604, 
+                11.274686813354492, 
+                8.933333396911621
+            ], 
+            "min" : [
+                -7.015629768371582, 
+                0.4702644348144531, 
+                -9.818004608154297
+            ], 
+            "type" : "VEC3"
+        }, 
+        {
+            "bufferView" : 6, 
+            "componentType" : 5126, 
+            "count" : 504, 
+            "max" : [
+                1.0, 
+                1.0, 
+                1.0
+            ], 
+            "min" : [
+                -1.0, 
+                -1.0, 
+                -1.0
+            ], 
+            "type" : "VEC3"
+        }, 
+        {
+            "bufferView" : 7, 
+            "componentType" : 5126, 
+            "count" : 504, 
+            "max" : [
+                1.0, 
+                1.0
+            ], 
+            "min" : [
+                0.0, 
+                0.0
+            ], 
+            "type" : "VEC2"
         }
     ], 
     "asset" : {
@@ -52,44 +124,79 @@
     "bufferViews" : [
         {
             "buffer" : 0, 
-            "byteLength" : 36, 
+            "byteLength" : 13296, 
             "byteOffset" : 0, 
             "target" : 34963
         }, 
         {
             "buffer" : 0, 
-            "byteLength" : 288, 
-            "byteOffset" : 36, 
+            "byteLength" : 50592, 
+            "byteOffset" : 13296, 
             "target" : 34962
         }, 
         {
             "buffer" : 0, 
-            "byteLength" : 288, 
-            "byteOffset" : 324, 
+            "byteLength" : 50592, 
+            "byteOffset" : 63888, 
+            "target" : 34962
+        }, 
+        {
+            "buffer" : 0, 
+            "byteLength" : 33728, 
+            "byteOffset" : 114480, 
+            "target" : 34962
+        }, 
+        {
+            "buffer" : 0, 
+            "byteLength" : 1512, 
+            "byteOffset" : 148208, 
+            "target" : 34963
+        }, 
+        {
+            "buffer" : 0, 
+            "byteLength" : 6048, 
+            "byteOffset" : 149720, 
+            "target" : 34962
+        }, 
+        {
+            "buffer" : 0, 
+            "byteLength" : 6048, 
+            "byteOffset" : 155768, 
+            "target" : 34962
+        }, 
+        {
+            "buffer" : 0, 
+            "byteLength" : 4032, 
+            "byteOffset" : 161816, 
             "target" : 34962
         }
     ], 
     "buffers" : [
         {
-            "byteLength" : 612, 
+            "byteLength" : 165848, 
             "uri" : "cubo.bin"
         }
     ], 
-    "cameras" : [
+    "images" : [
         {
-            "name" : "Camera", 
-            "perspective" : {
-                "aspectRatio" : 1.7777777777777777, 
-                "yfov" : 0.5033799372418416, 
-                "zfar" : 100.0, 
-                "znear" : 0.10000000149011612
-            }, 
-            "type" : "perspective"
+            "uri" : "Hotel_Hous_AO.png"
+        }, 
+        {
+            "uri" : "Steel_C.png"
+        }, 
+        {
+            "uri" : "Steel_N.png"
+        }, 
+        {
+            "uri" : "REF 1.png"
         }
     ], 
     "materials" : [
         {
-            "name" : "Material", 
+            "name" : "ground", 
+            "normalTexture" : {
+                "index" : 2
+            }, 
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0.6400000190734865, 
@@ -97,101 +204,118 @@
                     0.6400000190734865, 
                     1.0
                 ], 
+                "baseColorTexture" : {
+                    "index" : 1
+                }, 
+                "metallicFactor" : 0.0
+            }
+        }, 
+        {
+            "alphaMode" : "BLEND", 
+            "emissiveFactor" : [
+                0.34399998700618717, 
+                0.34399998700618717, 
+                0.34399998700618717
+            ], 
+            "name" : "hotel_glas", 
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.6400000190734865, 
+                    0.6400000190734865, 
+                    0.6400000190734865, 
+                    0.30000001192092896
+                ], 
+                "baseColorTexture" : {
+                    "index" : 3
+                }, 
                 "metallicFactor" : 0.0
             }
         }
     ], 
     "meshes" : [
         {
-            "name" : "Cube", 
+            "name" : "Cube.001", 
             "primitives" : [
                 {
                     "attributes" : {
                         "NORMAL" : 2, 
-                        "POSITION" : 1
+                        "POSITION" : 1, 
+                        "TEXCOORD_0" : 3
                     }, 
                     "indices" : 0, 
                     "material" : 0
+                }, 
+                {
+                    "attributes" : {
+                        "NORMAL" : 6, 
+                        "POSITION" : 5, 
+                        "TEXCOORD_0" : 7
+                    }, 
+                    "indices" : 4, 
+                    "material" : 1
                 }
             ]
         }
     ], 
     "nodes" : [
         {
-            "camera" : 0, 
-            "name" : "Correction_Camera", 
+            "name" : "Hemi", 
             "rotation" : [
-                -0.7071067690849304, 
-                -0.0, 
-                0.0, 
-                0.7071067690849304
-            ]
-        }, 
-        {
-            "children" : [
-                0
-            ], 
-            "name" : "Camera", 
-            "rotation" : [
-                0.48170700669288635, 
-                0.3342514932155609, 
-                -0.21292175352573395, 
-                0.7816000580787659
+                -0.197649747133255, 
+                -0.06408154964447021, 
+                0.30379676818847656, 
+                0.9298042058944702
             ], 
             "scale" : [
                 1.0, 
-                1.0, 
-                0.9999999403953552
+                0.9999999403953552, 
+                1.0
             ], 
             "translation" : [
-                7.481131553649902, 
-                5.34366512298584, 
-                6.5076398849487305
+                -51.742835998535156, 
+                33.56003952026367, 
+                23.69723129272461
             ]
         }, 
         {
             "mesh" : 0, 
-            "name" : "Cube", 
-            "scale" : [
-                2.559966564178467, 
-                2.559966564178467, 
-                2.559966564178467
-            ], 
+            "name" : "Residential Buildings 001", 
             "translation" : [
-                -0.10258406400680542, 
-                2.5309317111968994, 
-                0.08602596819400787
-            ]
-        }, 
-        {
-            "name" : "Lamp", 
-            "rotation" : [
-                0.16907575726509094, 
-                0.7558802962303162, 
-                -0.27217137813568115, 
-                0.570947527885437
-            ], 
-            "scale" : [
-                1.0, 
-                1.0, 
-                0.9999999403953552
-            ], 
-            "translation" : [
-                4.076245307922363, 
-                5.903861999511719, 
-                -1.0054539442062378
+                2.100156545639038, 
+                0.40827471017837524, 
+                2.237391710281372
             ]
         }
+    ], 
+    "samplers" : [
+        {}
     ], 
     "scene" : 0, 
     "scenes" : [
         {
-            "name" : "Scene", 
+            "name" : "09_civilian househotel", 
             "nodes" : [
-                2, 
-                3, 
+                0, 
                 1
             ]
+        }
+    ], 
+    "textures" : [
+        {
+            "sampler" : 0, 
+            "source" : 0
+        }, 
+        {
+            "sampler" : 0, 
+            "source" : 1
+        }, 
+        {
+            "sampler" : 0, 
+            "source" : 2
+        }, 
+        {
+            "sampler" : 0, 
+            "source" : 3
         }
     ]
 }
