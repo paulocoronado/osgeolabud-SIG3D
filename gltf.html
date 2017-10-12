@@ -41,49 +41,6 @@ var entity = viewer.entities.add({
 
 viewer.zoomTo(entity);
 
-    
-    
-    var scene = viewer.scene;
-
-
-
-var handler = new Cesium.ScreenSpaceEventHandler(scene.canvas);
-
-
-
-
-handler.setInputAction(function(click) {
-    var alertText = '';
-    function addToMessage(key, value) {
-        alertText += key + ': ' + value + '\n';
-    }
-
-    var pickedObject = scene.pick(click.position);
-    if (Cesium.defined(pickedObject) && (pickedObject.id === entity)) {
-        addToMessage('Objeto', pickedObject.id.id);
-        var position = viewer.camera.pickEllipsoid(click.position);
-        addToMessage('Posición X', click.position.x);
-        addToMessage('Posición Y', click.position.y);
-        var cartographicPosition = Cesium.Ellipsoid.WGS84.cartesianToCartographic(position);
-        addToMessage('Longitud', Cesium.Math.toDegrees(cartographicPosition.longitude));
-        addToMessage('Latitud', Cesium.Math.toDegrees(cartographicPosition.latitude));
-        terrainSamplePositions = [cartographicPosition];
-        
-        entity.label.eyeOffset= new Cesium.Cartesian3(0,20,0);
-        entity.label.show = true;
-            entity.label.text = alertText;
-    }else{
-        entity.label.show = false;
-    }
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
-
-
-
-
-
-
-
 </script>
 </body>
 </html>
