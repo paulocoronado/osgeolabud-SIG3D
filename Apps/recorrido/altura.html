@@ -16,15 +16,53 @@ and open the template in the editor.
     </head>
     <body>
         <div id="cesiumContainer"></div>
+        <div id="toolbar"></div>
         <script>
 
             var visor = new Cesium.Viewer('cesiumContainer');
             var matrizColores = {};
 
-            agregarGeojson('map.geojson');
-            agregarGeojson('http://localhost/Cesium/Apps/recorrido/sedeCentral.geojson');
+            agregarGeojson('map.geojson', true);
+            agregarGeojson('http://localhost/Cesium/Apps/recorrido/sedeCentral.geojson', true);
+            agregarCZMLAnimado("ruta.czml");
+            agregarCZML("puntos.czml");
 
-            function agregarGeojson(archivo) {
+            function agregarCZMLAnimado(archivo) {
+                
+                
+                var miDataSource=Cesium.CzmlDataSource.load(archivo);
+                
+                visor.dataSources.add(miDataSource).then(function (ds) {
+                        var miEntidad=ds.entities.getById('path');
+                        visor.trackedEntity = miEntidad;
+                        /*
+                         * NearFarScalar(near,  nearValue, far, farValue)
+                         * near: Distancia más cercana de la cámara
+                         * nearVlue: Valor que se tendrá cuando el objeto esté a near
+                         * far: Distancia máxima a la cámara
+                         * farValue: Valor que se tendrá cuando el objeto esté a far
+                         * 
+                         * ScaleByDistance: Define la escala del objeto respecto a la distancia de la cámara
+                         * Cuando la cámara está a 0 metros el objeto está escalado en 0.3 y desaparece (escala 0)
+                         * cuando llega a los 2000m                         *                        
+                         */
+                        
+                        var escalaCercaLejos=new Cesium.NearFarScalar(0.0, 0.3, 2000, 0.0);
+                        miEntidad.billboard.scaleByDistance = new Cesium.ConstantProperty(escalaCercaLejos);
+                    
+                });
+            }
+            
+            function agregarCZML(archivo){
+                
+                var miDataSource=Cesium.CzmlDataSource.load(archivo);
+                visor.dataSources.add(miDataSource);
+                
+            }
+
+
+
+            function agregarGeojson(archivo,zoom) {
 
                 var miDataSource = new Cesium.GeoJsonDataSource();
                 var promesa = miDataSource.load(archivo);
@@ -32,8 +70,9 @@ and open the template in the editor.
 
                 promesa.then(function (miDataSource) {
                     visor.dataSources.add(miDataSource);
+                    if(zoom==true){
                     visor.zoomTo(miDataSource);
-
+                    }
                     var entidades = miDataSource.entities.values;
 
 
@@ -43,10 +82,10 @@ and open the template in the editor.
                         var altura = miEntidad.properties.altura;
                         var color = matrizColores[propietario];
                         if (!color) {
-                                color = Cesium.Color.fromRandom({
-                                    alpha: 1.0
-                                });                            
-                            
+                            color = Cesium.Color.fromRandom({
+                                alpha: 1.0
+                            });
+
                             matrizColores[propietario] = color;
                         }
 
@@ -66,6 +105,34 @@ and open the template in the editor.
 
 
             }
+            
+            var carga=false;
+            var pancarta = document.getElementById('toolbar');
+            var cartographic = new Cesium.Cartographic();
+            visor.clock.onTick.addEventListener(function(clock) {
+                var miEntidad = visor.selectedEntity;
+                if (!Cesium.defined(miEntidad)) {
+                    pancarta.style.display = 'none';
+                } else {
+                    pancarta.style.display = 'block';
+                    
+                    if(miEntidad.position !== null && miEntidad.position !== undefined){
+                    var position = miEntidad.position.getValue(clock.currentTime);
+                    Cesium.Ellipsoid.WGS84.cartesianToCartographic(position, cartographic);
+                    pancarta.innerHTML =
+                        'Longitud: ' + Cesium.Math.toDegrees(cartographic.longitude).toFixed(3) + ' <br/>' +
+                        'Latitud: ' + Cesium.Math.toDegrees(cartographic.latitude).toFixed(3) + ' <br/>' +
+                        'Altura: ' + (cartographic.height * 0.001) + ' km' + ' <br/>' +
+                        'Tiempo Actual: ' + visor.clock.currentTime + '<br>';
+                    }
+                }
+                //Cargar un geoJSON en un momento dado
+                if(Cesium.JulianDate.secondsDifference(visor.clock.currentTime,visor.clock.startTime)>13 && carga==false){
+                     agregarGeojson('corferias.geojson',false);
+                     carga=true;
+                }
+                
+            });
 
 
         </script>
