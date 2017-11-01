@@ -106,7 +106,7 @@ and open the template in the editor.
 
             }
             
-            var carga=false;
+            var carga={};
             var pancarta = document.getElementById('toolbar');
             var cartographic = new Cesium.Cartographic();
             visor.clock.onTick.addEventListener(function(clock) {
@@ -127,10 +127,20 @@ and open the template in the editor.
                     }
                 }
                 //Cargar un geoJSON en un momento dado
-                if(Cesium.JulianDate.secondsDifference(visor.clock.currentTime,visor.clock.startTime)>13 && carga==false){
-                     agregarGeojson('corferias.geojson',false);
-                     carga=true;
+                
+                var segundos=Math.round(Cesium.JulianDate.secondsDifference(visor.clock.currentTime,visor.clock.startTime));
+                
+                if(!carga[segundos]){
+                    switch(segundos){
+
+                        case 13:
+                            agregarGeojson('corferias.geojson',false);
+                            carga[segundos]=true;
+                            break;
+                    }
+                
                 }
+                
                 
             });
 
