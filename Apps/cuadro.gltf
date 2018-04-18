@@ -1,0 +1,248 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 64,
+            "max": [
+                1.0,
+                0.9562966823577881,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                0.0,
+                -1.0
+            ],
+            "name": "accessor_buffer_Plane_POSITION_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 108,
+            "max": [
+                63
+            ],
+            "min": [
+                0
+            ],
+            "name": "accessor_buffer_Plane_0",
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 64,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                0.0,
+                -1.0
+            ],
+            "name": "accessor_buffer_Plane_NORMAL_0",
+            "type": "VEC3"
+        }
+    ],
+    "asset": {
+        "copyright": "",
+        "generator": "blendergltf v1.2.0",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 768,
+            "byteOffset": 0,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Plane_POSITION_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 768,
+            "byteOffset": 768,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Plane_NORMAL_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 220,
+            "byteOffset": 1536,
+            "name": "bufferView_buffer_Plane_0",
+            "target": 34963
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 1756,
+            "name": "buffer_cuadro",
+            "uri": "data:application/octet-stream;base64,AACAvwAAAAD8Ak+/rppQPwAAAAAAAIA/rppQPwAAAAD8Ak+/rppQPwAAAAC2TVM/AACAP9zPdD+2TVM/AACAP9zPdD+2TVM/rppQPwAAAAC2TVM/rppQP9zPdD8AAIA/AACAv9zPdD/8Ak+/rppQPwAAAAAAAIC/AACAv9zPdD8AAIC/rppQPwAAAAD8Ak+/AACAP9zPdD/8Ak+/rppQPwAAAAAAAIA/AACAvwAAAAC2TVM/rppQP9zPdD+2TVM/AACAPwAAAAAAAIC/AACAPwAAAAD8Ak+/AACAvwAAAAAAAIA/rppQPwAAAAC2TVM/AACAP9zPdD8AAIC/rppQP9zPdD+2TVM/AACAP9zPdD8AAIC/rppQP9zPdD/8Ak+/AACAv9zPdD8AAIA/AACAP9zPdD8AAIA/rppQP9zPdD/8Ak+/rppQP9zPdD8AAIC/rppQP9zPdD8AAIC/rppQP9zPdD8AAIA/rppQP9zPdD8AAIC/rppQPwAAAAAAAIC/AACAvwAAAAD8Ak+/AACAv9zPdD+2TVM/AACAv9zPdD+2TVM/AACAv9zPdD8AAIC/AACAPwAAAAC2TVM/AACAP9zPdD+2TVM/AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAC2TVM/AACAv9zPdD8AAIA/AACAvwAAAAD8Ak+/AACAv9zPdD8AAIC/AACAv9zPdD+2TVM/rppQP9zPdD/8Ak+/AACAv9zPdD8AAIA/AACAv9zPdD/8Ak+/rppQP9zPdD+2TVM/AACAPwAAAAD8Ak+/AACAP9zPdD/8Ak+/AACAP9zPdD8AAIA/rppQPwAAAAD8Ak+/AACAP9zPdD8AAIC/AACAP9zPdD/8Ak+/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAvwAAAAC2TVM/AACAv9zPdD/8Ak+/AACAvwAAAAC2TVM/AACAP9zPdD8AAIA/AACAvwAAAAAAAIC/AACAPwAAAAAAAIA/rppQP9zPdD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAD//38/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIC///9/PwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAD//38/AACAvwAAAAAAAAAAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAAAA//9/vwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA///9/vwAAAAAAAAAAAAAAAAAAAAD//3+/AAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAD//3+/AAAAAAAAAAAAAIC/AAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAD//3+/AACAvwAAAAAAAAAAAAAAAAAAAAAAAIC/AACAvwAAAAAAAAAAAAAAAAAAgD8AAAAA//9/PwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAAAAAAAAAAD//3+/AACAPwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAAAAAAAAgD8AAAAA//9/vwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC///9/PwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAA//9/vwAAAAAAAAAAAACAPwAAAAAAAAAA//9/PwAAAAAAAAAAAAAAAAAAAAD//38/AACAvwAAAAAAAAAAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAAAAAAAAAAD//38/AAAAAAAAAAAAAIC/AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/MgARABAAMgAQADUABwABADcABwA3ADwALQA0ABMALQATAA8AMAADADkAMAA5ACEAIgA7ACYAIgAmACkABgACACoABgAqAA4AHQAVACwAHQAsABgAGQAlABUAGQAVAB0ADAAWAB4ADAAeABcAFwAeACMAFwAjADoAJQAMABcAJQAXABUABAAkADEABAAxADYAMwA+ACgAMwAoAAUAFAAnAB8AFAAfABsALwAAAAsALwALABoAHAAJAD0AHAA9AAoAKwA4ACAAKwAgAAgALgASAA0ALgANAD8AAAAAAA=="
+        }
+    ],
+    "cameras": [
+        {
+            "name": "Camera",
+            "perspective": {
+                "aspectRatio": 1.703595982340029,
+                "yfov": 0.5033799409866333,
+                "zfar": 100.0,
+                "znear": 0.10000000149011612
+            },
+            "type": "perspective"
+        }
+    ],
+    "images": [
+        {
+            "name": "grafiti.jpeg",
+            "uri": "grafiti.jpeg"
+        }
+    ],
+    "materials": [
+        {
+            "alphaMode": "OPAQUE",
+            "doubleSided": false,
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Cuadro",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.64000004529953,
+                    0.64000004529953,
+                    0.64000004529953,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0,
+                    "texCoord": 0
+                },
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Plane",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 0
+                    },
+                    "indices": 1,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "camera": 0,
+            "name": "Camera",
+            "rotation": [
+                -0.08579309284687042,
+                -0.8932929635047913,
+                -0.21205639839172363,
+                0.38690993189811707
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                0.9999999403953552
+            ],
+            "translation": [
+                -7.481131553649902,
+                5.34366512298584,
+                -6.5076398849487305
+            ]
+        },
+        {
+            "name": "Lamp",
+            "rotation": [
+                -0.34203386306762695,
+                -0.5232755541801453,
+                -0.2841663062572479,
+                0.7269423007965088
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                0.9999999403953552
+            ],
+            "translation": [
+                -4.076245307922363,
+                5.903861999511719,
+                1.0054539442062378
+            ]
+        },
+        {
+            "mesh": 0,
+            "name": "Plane",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                4.89192008972168,
+                4.89192008972168,
+                4.89192008972168
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "name": "Texture",
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "extras": {
+                "active_camera": 0,
+                "background_color": [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824
+                ],
+                "frames_per_second": 24
+            },
+            "name": "Scene",
+            "nodes": [
+                2,
+                1,
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "name": "Texture",
+            "sampler": 0,
+            "source": 0
+        }
+    ]
+}

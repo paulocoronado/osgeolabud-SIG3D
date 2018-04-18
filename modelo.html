@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="Build/Cesium/Cesium.js"></script>
+<style>
+@import url("Build/Cesium/Widgets/widgets.css");
+
+</style>
+</head>
+<body>
+
+<div id="cesiumContainer">
+
+</div>
+
+<script>
+    
+
+var visor = new Cesium.Viewer('cesiumContainer',{
+    
+    selectionIndicator : true,
+    //infoBox:true
+});
+
+
+var matrizColores={};
+agregarGeojson('map.geojson', true);
+
+
+
+var entity = visor.entities.add(
+     {
+   	//Cartesian3 representa un punto en el espacio euclidiano
+	//Cesium.Cartesian3.fromDegrees(longitude, latitude, height, ellipsoid, result)
+	position : Cesium.Cartesian3.fromDegrees(-74.175806,4.628222,0),
+   model : {
+   	uri : '4.gltf',
+        scale:1,
+        castShadows: true,
+        receiveShadows: false,
+        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+        
+   }, 
+   label : {
+            show : true,
+            showBackground : true,
+            font : '14px monospace',
+            //horizontalOrigin : Cesium.HorizontalOrigin.LEFT,
+            //verticalOrigin : Cesium.VerticalOrigin.BASELINE,
+        }
+   
+});
+
+entity.
+visor.zoomTo(entity);
+
+
+function agregarCZML(archivo){
+                
+                var miDataSource=Cesium.CzmlDataSource.load(archivo);
+                visor.dataSources.add(miDataSource);
+                
+            }
+
+
+
+            function agregarGeojson(archivo,zoom) {
+
+                var miDataSource = new Cesium.GeoJsonDataSource();
+                var promesa = miDataSource.load(archivo);
+
+
+                promesa.then(function (miDataSource) {
+                    visor.dataSources.add(miDataSource);
+                    if(zoom==true){
+                    visor.zoomTo(miDataSource);
+                    }
+                    var entidades = miDataSource.entities.values;
+
+
+                    for (var i = 0; i < entidades.length; i++) {
+                        var miEntidad = entidades[i];
+                        var propietario = miEntidad.properties.propietario;
+                        var altura = miEntidad.properties.altura;
+                        var color = matrizColores[propietario];
+                        if (!color) {
+                            color = Cesium.Color.fromRandom({
+                                alpha: 1.0
+                            });
+
+                            matrizColores[propietario] = color;
+                        }
+
+                        miEntidad.polygon.material = color;
+                        miEntidad.polygon.outline = false;
+
+                        var posicion = miEntidad.polygon.hierarchy.getValue().positions[0];
+                        miEntidad.polygon.height = 0;
+                        miEntidad.polygon.extrudedHeight = miEntidad.properties.altura;
+                    }
+
+
+                }).otherwise(function (error) {
+                    console.error(error);
+                    console.error('No se cumplió la promesa!!');
+                });
+
+
+            }	
+
+</script>
+</body>
+</html>

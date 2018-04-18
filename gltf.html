@@ -1,6 +1,7 @@
 <html>
 <head>
-<!-- Importar biblioteca Cesium -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="Build/Cesium/Cesium.js"></script>
 <style>
 @import url("Build/Cesium/Widgets/widgets.css");
@@ -25,12 +26,12 @@ var entity = viewer.entities.add({
 	//Cesium.Cartesian3.fromDegrees(longitude, latitude, height, ellipsoid, result)
 	position : Cesium.Cartesian3.fromDegrees(-74.175806,4.628222,0),
    model : {
-   	uri : 'cubo.gltf',
+   	uri : '4.gltf',
         scale:1
      // minimumPixelSize : 128
    }, 
    label : {
-            show : false,
+            show : true,
             showBackground : true,
             font : '14px monospace',
             //horizontalOrigin : Cesium.HorizontalOrigin.LEFT,

@@ -19,11 +19,17 @@ and open the template in the editor.
         <div id="toolbar"></div>
         <script>
 
-            var visor = new Cesium.Viewer('cesiumContainer');
+            
+            var visor = new Cesium.Viewer('cesiumContainer', {
+                baseLayerPicker : false,
+                terrainProvider : new Cesium.CesiumTerrainProvider({
+                    url : '//assets.agi.com/stk-terrain/world'
+                })
+            });
             var matrizColores = {};
 
             agregarGeojson('map.geojson', true);
-            agregarGeojson('http://localhost/Cesium/Apps/recorrido/sedeCentral.geojson', true);
+            agregarGeojson('sedeCentral.geojson', true);
             agregarCZMLAnimado("ruta.czml");
             agregarCZML("puntos.czml");
 
