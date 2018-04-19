@@ -20,12 +20,48 @@ and open the template in the editor.
         <script>
 
             
+            // -------- Crear el visor ------
             var visor = new Cesium.Viewer('cesiumContainer', {
-                //baseLayerPicker : false,
-                /*terrainProvider : new Cesium.CesiumTerrainProvider({
-                    url : '//assets.agi.com/stk-terrain/world'
-                })*/
-            });
+                    imageryProvider : new Cesium.createOpenStreetMapImageryProvider({
+                        url : 'https://a.tile.openstreetmap.org/'
+                    }),
+                    baseLayerPicker : false            
+                });
+
+
+		scene=visor.scene;
+
+		var entity = visor.entities.add({
+			label : {
+			    show : false,
+			    showBackground : true,
+			    font : '14px monospace',
+			    horizontalOrigin : Cesium.HorizontalOrigin.LEFT,
+			    verticalOrigin : Cesium.VerticalOrigin.TOP,
+			    pixelOffset : new Cesium.Cartesian2(15, 0)
+			}
+		    });
+
+		handler = new Cesium.ScreenSpaceEventHandler(scene.canvas);
+		    handler.setInputAction(function(movement) {
+			var cartesian = visor.camera.pickEllipsoid(movement.endPosition, scene.globe.ellipsoid);
+			if (cartesian) {
+			    var cartographic = Cesium.Cartographic.fromCartesian(cartesian);
+			    var longitudeString = Cesium.Math.toDegrees(cartographic.longitude).toFixed(2);
+			    var latitudeString = Cesium.Math.toDegrees(cartographic.latitude).toFixed(2);
+
+			    entity.position = cartesian;
+			    entity.label.show = true;
+			    entity.label.text =
+				'Lon: ' + ('   ' + longitudeString).slice(-7) + '\u00B0' +
+				'\nLat: ' + ('   ' + latitudeString).slice(-7) + '\u00B0';
+			} else {
+			    entity.label.show = false;
+			}
+		    }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+
+
+
             var matrizColores = {};
             agregarGeojson('../../Data/departamentos/depto.geojson', true);
             
@@ -66,7 +102,6 @@ and open the template in the editor.
             }
 
 
-
             function agregarGeojson(archivo,zoom) {
 
                 var miDataSource = new Cesium.GeoJsonDataSource();
@@ -98,10 +133,25 @@ and open the template in the editor.
                         miEntidad.polygon.outline = false;
 
                         var posicion = miEntidad.polygon.hierarchy.getValue().positions[0];
+			miEntidad.position = posicion;
                         miEntidad.polygon.height = 0;
-                        var area=miEntidad.properties.AREA/1142000000;
-                        console.log(area);
-                        miEntidad.polygon.extrudedHeight = area*1000;
+                        var area=miEntidad.properties.AREA/11420000000;
+//                        console.log(area);
+                        miEntidad.polygon.extrudedHeight = area*5000;
+			miEntidad.label= {
+			    text : miEntidad.properties.NOMBRE_DPT
+			};
+
+			miEntidad.description="<h1>"+miEntidad.properties.NOMBRE_DPT+"</h1><p>Tiene un área total de "+miEntidad.properties.AREA
+						+" lo cual equivale a un "+Math.round(area)+"% del total del país</p>";
+
+			miEntidad.label.scaleByDistance = new Cesium.NearFarScalar(1.5e2, 1.5, 8.0e6, 0.0);
+
+			miEntidad.label.show=true;
+
+				
+
+
                     }
 
 
@@ -127,12 +177,15 @@ and open the template in the editor.
                     var position = miEntidad.position.getValue(clock.currentTime);
                     Cesium.Ellipsoid.WGS84.cartesianToCartographic(position, cartographic);
                     pancarta.innerHTML =
-                        'Longitud: ' + Cesium.Math.toDegrees(cartographic.longitude).toFixed(3) + ' <br/>' +
-                        'Latitud: ' + Cesium.Math.toDegrees(cartographic.latitude).toFixed(3) + ' <br/>' +
-                        'Altura: ' + (cartographic.height * 0.001) + ' km' + ' <br/>' +
-                        'Tiempo Actual: ' + visor.clock.currentTime + '<br>';
+                        'Ha seleccionado:<h1>' + miEntidad.properties.NOMBRE_DPT + '</h1>'
                     }
                 }
+
+		
+		
+
+
+
                 //Cargar un geoJSON en un momento dado
                 
                 var segundos=Math.round(Cesium.JulianDate.secondsDifference(visor.clock.currentTime,visor.clock.startTime));
