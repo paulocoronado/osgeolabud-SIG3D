@@ -24,7 +24,8 @@ and open the template in the editor.
                     imageryProvider : new Cesium.createOpenStreetMapImageryProvider({
                         url : 'https://a.tile.openstreetmap.org/'
                     }),
-                    baseLayerPicker : false            
+                    baseLayerPicker : false,
+                    vrButton: true
                 });
             
             // ------- Marcadores ----------
@@ -77,6 +78,8 @@ and open the template in the editor.
             Cesium.when.all([verPinSimple, verPinTexto, verPinPersonalizado], function(pines){
                 visor.zoomTo(pines);
             });
+            
+    
 
 
         </script>
