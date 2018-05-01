@@ -34,7 +34,7 @@ function configurarEntidades(misEntidades){
                         var color = matrizColores[propietario];
                         if (!color) {
                             color = Cesium.Color.fromRandom({
-                                alpha: 0.5
+                                alpha: 0.4
                             });
 
                             //matrizColores[propietario] = color;
@@ -52,7 +52,7 @@ function configurarEntidades(misEntidades){
                         miEntidad.polygon.height = 0;
                         var area=miEntidad.properties.AREA/11420000000;
 //                        console.log(area);
-                        miEntidad.polygon.extrudedHeight = area*5000;
+                        miEntidad.polygon.extrudedHeight = area*25000;
 			miEntidad.label= {
 			    text : miEntidad.properties.NOMBRE_DPT
 			};

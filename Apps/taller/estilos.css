@@ -1,0 +1,14 @@
+#contenedorInformacion{
+    
+    width:100%;
+    border: #0000FF dotted 1px;
+    height: 100px;
+    float:left;
+}
+
+#contenedorVisor{
+    
+    width:100%;
+    border: #0000FF dotted 1px;
+    float:left;
+}

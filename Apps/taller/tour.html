@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Representación volumétrica a partir de archivos KML
+-->
+<html>
+    <head>
+        <title>Cesium Ruta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../../Build/Cesium/Cesium.js"></script>
+        <script src="../../API/osgeolabudCesium.js"></script>
+        <script src="funciones.js"></script>
+        <style>
+            @import "../../Build/Cesium/Widgets/widgets.css";
+            @import "estilos.css";
+        </style>
+    </head>
+    <body>
+        <div id='menuSuperior'></div>
+        <div id='menuLateralIzquierdo'></div>        
+        <div id='contenedorVisor'></div>
+        <div id='contenedorInformacion'></div>
+        <div id='piePagina'></div>
+        <script>            
+            Cesium.BingMapsApi.defaultKey = 'AlkxwCUOmqO4WcivyXNDBWNakzW5tkQRu9lBp9OLA03PjUQ4_t8NxDb74qaCMouQ';            
+            var visor=new Cesium.Viewer('contenedorVisor');
+            agregarGeojson("Bogota_suesca.js", visor)
+                    .then(configurarEntidades)
+                    .then(agregarSeguimientoMouse(visor))
+                    .then(eventosClickIzquierdo(visor));            
+            
+            
+        </script>
+    </body>
+</html>
